@@ -7,10 +7,10 @@ public class Professor {
     private String nome;
     private Disciplina disciplina;
 
-    public Professor(int id, String nome, Disciplina disciplina) throws Exception {
+    public Professor(int id, String nome, Disciplina disciplina) {
 
-        if(id > 10 || id < 0){
-            throw new Exception("ID de 1 a 10");
+        if(id >= 11 || id <= 0){
+            throw new IllegalArgumentException("ID de 1 a 10");
         }
 
         this.id = id;
@@ -57,10 +57,6 @@ public class Professor {
 
     @Override
     public String toString() {
-        return "Professor{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", disciplina=" + disciplina +
-                '}';
+        return this.getNome() + " => " + disciplina.getSigla()  ;
     }
 }

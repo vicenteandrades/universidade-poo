@@ -3,34 +3,14 @@ package Entities;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Curso {
-    private String sigla;
-    private String nomeCurso;
+public class Curso extends Materia{
     private int numeroDeAlunos;
     Set<Aluno> alunos;
 
-    public Curso(String sigla, String nomeCurso, int numeroDeAlunos) {
-        this.sigla = sigla;
-        this.nomeCurso = nomeCurso;
+    public Curso(String sigla, String descricao, int numeroDeAlunos) {
+        super(sigla, descricao);
         this.numeroDeAlunos = numeroDeAlunos;
-
-        alunos = new HashSet<Aluno>();
-    }
-
-    public String getSigla() {
-        return sigla;
-    }
-
-    public void setSigla(String sigla) {
-        this.sigla = sigla;
-    }
-
-    public String getNomeCurso() {
-        return nomeCurso;
-    }
-
-    public void setNomeCurso(String nomeCurso) {
-        this.nomeCurso = nomeCurso;
+        alunos = new HashSet<>();
     }
 
     public int getNumeroDeAlunos() {
@@ -43,10 +23,6 @@ public class Curso {
 
     @Override
     public String toString() {
-        return "Curso{" +
-                "sigla='" + sigla + '\'' +
-                ", nomeCurso='" + nomeCurso + '\'' +
-                ", numeroDeAlunos=" + numeroDeAlunos +
-                '}';
+        return "( " + super.getSigla().toUpperCase() + " ) " + super.getDescricao().toUpperCase()+ " => " + this.getNumeroDeAlunos();
     }
 }

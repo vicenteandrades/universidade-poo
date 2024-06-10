@@ -3,64 +3,77 @@ package Register;
 import Entities.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
+
 
 public class Cadastro {
 
-    public static List<Disciplina> disciplinas = new ArrayList<>();
-    public static List<Curso> cursos = new ArrayList<>();
-    public static List<Laboratorio> laboratorios = new ArrayList<>();
+    public static List<Disciplina> disciplinas = new ArrayList<>(
+            Arrays.asList(
+                    new Disciplina("BES005", "Logica de programação e algoritmos"),
+                    new Disciplina("BES006", "Estrutura de dados"),
+                    new Disciplina("BES008", "Programação orientada a objetos"),
+                    new Disciplina("BES011", "Bancos de dados"),
+                    new Disciplina("BES012", "Engenharia de requisitos"),
+                    new Disciplina("BES020", "Programação para dispositivos moveis"),
+                    new Disciplina("BES026", "Sistemas distribuidos"),
+                    new Disciplina("BES038", "Inteligencia artificial"),
+                    new Disciplina("BES049", "Programação Web"),
+                    new Disciplina("BES048", "Programação Front End")
+            )
+    );
 
-    public static List<Laboratorio> CadastrarLaboratorio() throws Exception {
-        for (int i = 1; i <= 4; i++) {
-            laboratorios.add(new Laboratorio(i, 20));
+    public static List<Professor> professores = new ArrayList<>(
+            Arrays.asList(
+                    new Professor(1, "Professor01", disciplinas.get(0)),
+                    new Professor(2, "Professor02", disciplinas.get(1)),
+                    new Professor(3, "Professor03", disciplinas.get(2)),
+                    new Professor(4, "Professor04", disciplinas.get(3)),
+                    new Professor(5, "Professor05", disciplinas.get(4)),
+                    new Professor(6, "Professor06", disciplinas.get(5)),
+                    new Professor(7, "Professor07", disciplinas.get(6)),
+                    new Professor(8, "Professor08", disciplinas.get(7)),
+                    new Professor(9, "Professor09", disciplinas.get(8)),
+                    new Professor(10, "Professor10", disciplinas.get(9))
+            )
+    );
+
+    public static List<Curso> cursos = new ArrayList<>(
+            Arrays.asList(
+                    new Curso("BES", "Bacharel em Engenharia de Software", 200),
+                    new Curso("ADS", "Análise e Desenvolvimento de Sistemas", 120),
+                    new Curso("JGD", "Jogos Digitais", 90),
+                    new Curso("GTI", "Gestão da Tecnologia da Informação", 40),
+                    new Curso("INF", "Informática", 20),
+                    new Curso("RDC", "Rede de Computadores", 30)
+            )
+    );
+    public static List<Laboratorio> laboratorios;
+
+    static {
+        try {
+            laboratorios = new ArrayList<>(
+                    Arrays.asList(
+                            new Laboratorio(1, 20),
+                            new Laboratorio(2, 20),
+                            new Laboratorio(3,  20),
+                            new Laboratorio(4,  20),
+                            new Laboratorio(5,  15),
+                            new Laboratorio(6,  15),
+                            new Laboratorio(7,  15),
+                            new Laboratorio(8,  15),
+                            new Laboratorio(9,  15),
+                            new Laboratorio(10,  15),
+                            new Laboratorio(11,  15),
+                            new Laboratorio(12,  30)
+
+                    )
+            );
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        for (int i = 5; i <= 11; i++) {
-            laboratorios.add(new Laboratorio(i, 15));
-        }
-        laboratorios.add(new Laboratorio(12, 30));
-        return laboratorios;
     }
-
-    public static List<Disciplina> CadastrarDisciplina() throws Exception {
-        disciplinas.add(new Disciplina("BES005", "Logica de programação e algoritmos"));
-        disciplinas.add(new Disciplina("BES006", "Estrutura de dados"));
-        disciplinas.add(new Disciplina("BES008", "Programação orientada a objetos"));
-        disciplinas.add(new Disciplina("BES011", "Bancos de dados"));
-        disciplinas.add(new Disciplina("BES012", "Engenharia de requisitos"));
-        disciplinas.add(new Disciplina("BES020", "Programação para dispositivos moveis"));
-        disciplinas.add(new Disciplina("BES026", "Sistemas distribuidos"));
-        disciplinas.add(new Disciplina("BES038", "Inteligencia artificial"));
-        disciplinas.add(new Disciplina("BES049", "Programação Web"));
-        disciplinas.add(new Disciplina("BES048", "Programação Front End"));
-        return disciplinas;
-    }
-
-    public static Set<Professor> CadastrarProfessor() throws Exception {
-        Set<Professor> professores = new HashSet<>();
-        String[] nomes = {
-                "Professor 1", "Professor 2", "Professor 3", "Professor 4", "Professor 5",
-                "Professor 6", "Professor 7", "Professor 8", "Professor 9", "Professor 10"
-        };
-
-        for (int i = 1; i <= 10; i++) {
-            professores.add(new Professor(i, nomes[i], disciplinas.get(i)));
-        }
-        return professores;
-    }
-
-    public static List<Curso> CadastrarCurso(){
-        cursos.add(new Curso("BES", "Bacharel em Engenharia de Software", 200));
-        cursos.add(new Curso("ADS", "Análise e Desenvolvimento de Sistemas", 120));
-        cursos.add(new Curso("JGD", "Jogos Digitais", 90));
-        cursos.add(new Curso("GTI", "Gestão da Tecnologia da Informação", 40));
-        cursos.add(new Curso("INF", "Informática", 20));
-        cursos.add(new Curso("RDC", "Rede de Computadores", 30));
-        return cursos;
-    }
-
     public static void cadastrarAlunos(List<Curso> cursos) throws Exception {
         long matriculaInicial = 2022001;
         for (Curso curso : cursos) {

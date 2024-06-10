@@ -3,18 +3,19 @@ package Entities;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 
 
 public class Solicitacao {
 
     private Professor professor;
-    private int idLaboratorio;
-    private Date date;
+    private Laboratorio laboratorio;
+    private String date;
     private LocalTime hours;
 
-    public Solicitacao(Professor professor, int idLaboratorio, Date date, LocalTime hours) {
+    public Solicitacao(Professor professor, Laboratorio laboratorio, String date, LocalTime hours) {
         this.professor = professor;
-        this.idLaboratorio = idLaboratorio;
+        this.laboratorio = laboratorio;
         this.date = date;
         this.hours = hours;
     }
@@ -27,19 +28,31 @@ public class Solicitacao {
         this.professor = professor;
     }
 
-    public int getIdLaboratorio() {
-        return idLaboratorio;
+    public Laboratorio getIdLaboratorio() {
+        return this.laboratorio;
     }
 
-    public void setIdLaboratorio(int idLaboratorio) {
-        this.idLaboratorio = idLaboratorio;
+    public int getLabId() {
+        return this.laboratorio.getId();
     }
 
-    public Date getDate() {
+    public int getCapacidade() {
+        return this.laboratorio.getCapacidade();
+    }
+
+    public List<LocalTime> getHorariosDisponiveis() {
+        return this.laboratorio.getHorariosDisponiveis();
+    }
+
+    public void setIdLaboratorio(Laboratorio laboratorio) {
+        this.laboratorio = laboratorio;
+    }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -55,7 +68,7 @@ public class Solicitacao {
     public String toString() {
         return "Solicitacao{" +
                 "professor=" + professor +
-                ", idLaboratorio=" + idLaboratorio +
+                ", Laboratorio=" + laboratorio +
                 ", date=" + date +
                 ", hours=" + hours +
                 '}';
